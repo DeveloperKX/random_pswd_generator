@@ -1,0 +1,23 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <SwitchPreference
+        android:defaultValue="true"
+        android:key="lowercase_letters_switch"
+        android:title="@string/pref_title_enable_lowercase_letters" />
+
+    <SwitchPreference
+        android:defaultValue="true"
+        android:key="uppercase_letters_switch"
+        android:title="@string/pref_title_enable_uppercase_letters" />
+
+    <SwitchPreference
+        android:defaultValue="true"
+        android:key="digits_switch"
+        android:title="@string/pref_title_enable_digits" />
+
+    <SwitchPreference
+        android:defaultValue="true"
+        android:key="special_symbols_switch"
+        android:title="@string/pref_title_enable_special_symbols" />
+
+</PreferenceScreen>
