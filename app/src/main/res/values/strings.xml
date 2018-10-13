@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">random_pswd_generator</string>
+    <string name="action_settings">Settings</string>
+</resources>
