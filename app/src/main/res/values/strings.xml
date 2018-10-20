@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">Random pswd generator</string>
+    <string name="action_settings">Settings</string>
+    <string name="lengthEditTextHint">Length</string>
+    <string name="lengthTextViewLabel">Length</string>
+    <string name="generateButtonText">Generate</string>
+    <string name="title_activity_settings">Settings</string>
+
+    <!-- Strings related to Settings -->
+
+    <string name="pref_title_enable_lowercase_letters">Enable lowercase letters</string>
+    <string name="pref_title_enable_uppercase_letters">Enable uppercase letters</string>
+    <string name="pref_title_enable_digits">Enable digits</string>
+    <string name="pref_title_enable_special_symbols">Enable special symbols</string>
+
+
+    <string name="toast_message_cant_turn_off_all">Cannot turn off the switches</string>
+
+</resources>
