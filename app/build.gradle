@@ -3,7 +3,7 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 27
     defaultConfig {
-        applicationId "developerkx.random_pswd_generator"
+        applicationId "random_pswd_generator.kx"
         minSdkVersion 26
         targetSdkVersion 27
         versionCode 1
