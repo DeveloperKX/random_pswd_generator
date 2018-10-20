@@ -1,7 +1,6 @@
 package developerkx.random_pswd_generator;
 
 import android.annotation.TargetApi;
-import android.app.Fragment;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Build;
@@ -13,6 +12,8 @@ import android.support.v7.app.ActionBar;
 import android.preference.PreferenceFragment;
 import android.view.MenuItem;
 import android.widget.Toast;
+
+import java.util.HashSet;
 
 import static android.widget.Toast.LENGTH_SHORT;
 
@@ -28,7 +29,7 @@ import static android.widget.Toast.LENGTH_SHORT;
  * API Guide</a> for more information on developing a Settings UI.
  */
 public class SettingsActivity extends AppCompatPreferenceActivity {
-    int countOfEnabledSwitches = 0;
+    HashSet<String> enabledSwitches = new HashSet<String>();
     Toast cantTurnOffToast;
 
     @Override
@@ -49,19 +50,19 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
         boolean useSpecialSymbols = defaultSharedPreferences.getBoolean("special_symbols_switch", true);
 
         if (useLowercaseLetters) {
-            countOfEnabledSwitches += 1;
+            enabledSwitches.add("lowercase_letters_switch");
         }
 
         if (useUppercaseLetters) {
-            countOfEnabledSwitches += 1;
+            enabledSwitches.add("uppercase_letters_switch");
         }
 
         if (useDigits) {
-            countOfEnabledSwitches += 1;
+            enabledSwitches.add("digits_switch");
         }
 
         if (useSpecialSymbols) {
-            countOfEnabledSwitches += 1;
+            enabledSwitches.add("special_symbols_switch");
         }
 
         defaultSharedPreferences
@@ -72,10 +73,15 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
                     boolean value2 = sharedPreferences.getBoolean(key, false);
 
                     if (value1 == value2) {
-                        countOfEnabledSwitches += (value1 ? 1 : -1);
+                        if (value1) {
+                            enabledSwitches.add(key);
+                        }
+                        else {
+                            enabledSwitches.remove(key);
+                        }
                     }
 
-                    if (countOfEnabledSwitches <= 0 || value1 != value2) {
+                    if (enabledSwitches.isEmpty() || value1 != value2) {
                         PreferenceFragment preferenceFragment = (PreferenceFragment) getFragmentManager().findFragmentById(android.R.id.content);
                         TwoStatePreference twoStatePreference = (TwoStatePreference) preferenceFragment.findPreference(key);
                         twoStatePreference.setChecked(true);
